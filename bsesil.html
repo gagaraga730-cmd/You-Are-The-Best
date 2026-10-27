@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💖 The Best Princess 💖</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;600;700&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background:
+    radial-gradient(circle at 20% 20%, #fff0f6 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, #ffe0ec 0%, transparent 50%),
+    linear-gradient(135deg, #ffe0ec 0%, #ffc2d8 50%, #ffb0d0 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  padding: 80px 15px 60px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
+  overflow-x: hidden;
+  color: #333;
+}
+
+/* ===== HATI-HATI MELAYANG ===== */
+.hearts {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+.hearts span {
+  position: absolute;
+  bottom: -80px;
+  font-size: 24px;
+  animation: floatUp 14s linear infinite;
+  opacity: 0;
+}
+.hearts span:nth-child(1) { left: 5%;  animation-delay: 0s;  font-size: 26px; }
+.hearts span:nth-child(2) { left: 18%; animation-delay: 2s;  font-size: 18px; }
+.hearts span:nth-child(3) { left: 32%; animation-delay: 4s;  font-size: 30px; }
+.hearts span:nth-child(4) { left: 48%; animation-delay: 1s;  font-size: 22px; }
+.hearts span:nth-child(5) { left: 62%; animation-delay: 5s;  font-size: 20px; }
+.hearts span:nth-child(6) { left: 78%; animation-delay: 3s;  font-size: 28px; }
+.hearts span:nth-child(7) { left: 90%; animation-delay: 6s;  font-size: 24px; }
+.hearts span:nth-child(8) { left: 42%; animation-delay: 7s;  font-size: 20px; }
+
+@keyframes floatUp {
+  0%   { transform: translateY(0) rotate(0deg); opacity: 0; }
+  10%  { opacity: 0.75; }
+  85%  { opacity: 0.75; }
+  100% { transform: translateY(-115vh) rotate(360deg); opacity: 0; }
+}
+
+/* ===== KONTAINER UTAMA ===== */
+.main {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 920px;
+  text-align: center;
+  padding: 10px;
+}
+
+/* ===== JUDUL ===== */
+.title {
+  font-family: 'Great Vibes', cursive;
+  font-size: 4em;
+  line-height: 1.2;
+  padding: 0.15em 0 0.25em;
+  margin-bottom: 5px;
+  background: linear-gradient(135deg, #ff1493, #ff69b4, #c2185b);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  filter: drop-shadow(0 2px 8px rgba(255, 105, 180, 0.4));
+}
+
+.subtitle {
+  color: #a3345d;
+  font-weight: 600;
+  margin-bottom: 45px;
+  font-size: 1.05em;
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.8);
+}
+
+/* ===== GRID FOTO 4 x 3 ===== */
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-bottom: 50px;
+}
+
+.photo-frame {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  padding: 8px 8px 26px;
+  background: #ffffff;
+  border-radius: 6px;
+  box-shadow:
+    0 4px 12px rgba(255, 105, 180, 0.25),
+    0 8px 24px rgba(0, 0, 0, 0.08);
+  opacity: 0;
+  transform: scale(0.3) rotate(-25deg) translateY(30px);
+  cursor: pointer;
+  transform-origin: center;
+}
+
+.photo-frame.show {
+  animation: photoIn 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes photoIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) rotate(-25deg) translateY(30px);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.08) rotate(3deg) translateY(-6px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(var(--rot, 0deg)) translateY(0);
+  }
+}
+
+.photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 3px;
+  display: block;
+  background: #fff0f6;
+}
+
+.photo-frame::after {
+  content: '';
+  position: absolute;
+  inset: 4px 4px 22px;
+  border: 1px solid rgba(255, 182, 213, 0.4);
+  border-radius: 3px;
+  pointer-events: none;
+}
+
+.photo-frame:hover {
+  transform: scale(1.1) rotate(0deg) translateY(-8px) !important;
+  box-shadow:
+    0 14px 34px rgba(255, 105, 180, 0.5),
+    0 0 0 3px rgba(255, 209, 227, 0.8);
+  z-index: 10;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.4s ease;
+}
+
+.photo-frame:hover::after {
+  border-color: transparent;
+}
+
+/* ===== 💖 BALON TEKS BENTUK LOVE ===== */
+.love-bubble {
+  position: absolute;
+  bottom: calc(100% + 14px);
+  left: 50%;
+  width: 380px;
+  height: 360px;
+  color: #ffffff;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.78em;
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.5;
+  padding: 95px 60px 125px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateX(-50%) scale(0) translateY(10px);
+  transform-origin: bottom center;
+  transition:
+    opacity 0.35s ease,
+    transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: 50;
+  text-shadow: 0 1px 3px rgba(120, 20, 60, 0.75);
+  letter-spacing: 0.2px;
+}
+
+.love-bubble::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #ff85b3 0%, #ff1493 100%);
+  clip-path: url(#heartClip);
+  filter: drop-shadow(0 8px 20px rgba(255, 20, 147, 0.5));
+  z-index: -1;
+}
+
+.love-bubble.active {
+  opacity: 1;
+  transform: translateX(-50%) scale(1) translateY(0);
+  pointer-events: auto;
+}
+
+.love-bubble::after {
+  content: '✨';
+  position: absolute;
+  top: 55px;
+  right: 60px;
+  font-size: 14px;
+  opacity: 0.85;
+  animation: sparkle 2s ease-in-out infinite;
+  z-index: 1;
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0.3; transform: scale(0.8); }
+  50%      { opacity: 1; transform: scale(1.2); }
+}
+
+.photo-frame.active {
+  transform: scale(1.06) rotate(0deg) translateY(-6px) !important;
+  box-shadow:
+    0 14px 34px rgba(255, 20, 147, 0.6),
+    0 0 0 3px rgba(255, 20, 147, 0.8) !important;
+  z-index: 20;
+}
+
+/* ===== KOTAK KATA-KATA ===== */
+.message-box {
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 40px 35px;
+  border-radius: 26px;
+  border: 2px solid rgba(255, 209, 227, 0.9);
+  box-shadow:
+    0 8px 30px rgba(255, 105, 180, 0.25),
+    0 0 60px rgba(255, 182, 213, 0.4);
+  margin-bottom: 30px;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: messageIn 1s ease 1.6s forwards;
+  position: relative;
+}
+
+@keyframes messageIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.message-box::before {
+  content: '🎀';
+  position: absolute;
+  top: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 48px;
+  filter: drop-shadow(0 4px 6px rgba(255, 105, 180, 0.5));
+  animation: wiggle 2s ease-in-out infinite;
+}
+@keyframes wiggle {
+  0%, 100% { transform: translateX(-50%) rotate(-6deg); }
+  50%      { transform: translateX(-50%) rotate(6deg); }
+}
+
+.message-box .deco-top {
+  font-size: 1.8em;
+  margin-bottom: 15px;
+  display: inline-block;
+  animation: bounceCake 2s ease-in-out infinite;
+}
+
+@keyframes bounceCake {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50%      { transform: translateY(-7px) scale(1.08); }
+}
+
+.message-box p {
+  font-size: 1.1em;
+  line-height: 1.85;
+  color: #7a2848;
+  font-weight: 500;
+  margin-bottom: 14px;
+}
+
+.message-box p:last-of-type {
+  margin-bottom: 0;
+}
+
+/* ===== 💖 TOMBOL I LOVE YOU (yang harus diklik) ===== */
+.signature-btn {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  margin-top: 25px;
+  padding: 14px 42px 12px;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%);
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  position: relative;
+  box-shadow:
+    0 8px 24px rgba(255, 20, 147, 0.5),
+    0 0 30px rgba(255, 105, 180, 0.4);
+  animation: sigPulse 2s ease-in-out infinite;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.signature-btn:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow:
+    0 14px 34px rgba(255, 20, 147, 0.7),
+    0 0 45px rgba(255, 105, 180, 0.7);
+}
+
+.signature-btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.sig-text {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.2em;
+  line-height: 1;
+  filter: drop-shadow(0 2px 4px rgba(120, 20, 60, 0.5));
+}
+
+.sig-hint {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.72em;
+  font-weight: 600;
+  opacity: 0.9;
+  letter-spacing: 0.4px;
+  animation: hintBlink 1.6s ease-in-out infinite;
+}
+
+@keyframes sigPulse {
+  0%, 100% {
+    box-shadow:
+      0 8px 24px rgba(255, 20, 147, 0.5),
+      0 0 30px rgba(255, 105, 180, 0.4);
+  }
+  50% {
+    box-shadow:
+      0 8px 32px rgba(255, 20, 147, 0.85),
+      0 0 50px rgba(255, 105, 180, 0.75);
+  }
+}
+
+@keyframes hintBlink {
+  0%, 100% { opacity: 0.6; transform: translateY(0); }
+  50%      { opacity: 1;   transform: translateY(-3px); }
+}
+
+/* ===== TOMBOL MUSIK ===== */
+.music-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 100;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  background: linear-gradient(135deg, #ff69b4, #ff1493);
+  color: #fff;
+  font-size: 26px;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(255, 20, 147, 0.5);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: pulseBtn 2s ease-in-out infinite;
+}
+
+.music-btn:hover {
+  transform: scale(1.1) rotate(10deg);
+  box-shadow: 0 8px 28px rgba(255, 20, 147, 0.7);
+}
+
+.music-btn.playing {
+  animation: spinMusic 3s linear infinite;
+}
+
+@keyframes pulseBtn {
+  0%, 100% { box-shadow: 0 6px 20px rgba(255, 20, 147, 0.5); }
+  50%      { box-shadow: 0 6px 30px rgba(255, 20, 147, 0.9); }
+}
+@keyframes spinMusic {
+  to { transform: rotate(360deg); }
+}
+
+/* ===== TOMBOL KEMBALI ===== */
+.back-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 100;
+  padding: 10px 20px;
+  border-radius: 30px;
+  border: 2px solid #fff;
+  background: rgba(255, 255, 255, 0.85);
+  color: #d6336c;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 0.9em;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(255, 105, 180, 0.35);
+  transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+  background: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 105, 180, 0.5);
+}
+
+/* ===== PETUNJUK KLIK FOTO ===== */
+.click-info {
+  display: inline-block;
+  margin-bottom: 25px;
+  padding: 8px 20px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 20px;
+  color: #d6336c;
+  font-size: 0.85em;
+  font-weight: 600;
+  box-shadow: 0 2px 10px rgba(255, 105, 180, 0.25);
+  animation: pulse-info 2s ease-in-out infinite;
+}
+@keyframes pulse-info {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.05); }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 700px) {
+  .title { font-size: 3em; }
+  .photo-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  body { padding: 70px 12px 40px; }
+  .title { font-size: 2.4em; }
+  .subtitle { font-size: 0.95em; margin-bottom: 30px; }
+  .photo-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 35px;
+  }
+  .photo-frame { padding: 5px 5px 18px; }
+  .message-box { padding: 28px 20px; }
+  .message-box p { font-size: 1em; }
+  .music-btn { width: 52px; height: 52px; font-size: 22px; }
+  .back-btn { font-size: 0.8em; padding: 8px 14px; }
+
+  /* Bubble lebih kecil di HP */
+  .love-bubble {
+    width: 280px;
+    height: 265px;
+    font-size: 0.7em;
+    padding: 70px 45px 95px;
+  }
+  .love-bubble::after {
+    top: 42px;
+    right: 45px;
+    font-size: 11px;
+  }
+
+  /* Tombol signature lebih kecil di HP */
+  .signature-btn {
+    padding: 12px 30px 10px;
+  }
+  .sig-text {
+    font-size: 1.8em;
+  }
+  .sig-hint {
+    font-size: 0.68em;
+  }
+}
+</style>
+</head>
+<body>
+
+  <!-- 💖 SVG CLIP-PATH untuk bentuk hati (auto-scale) -->
+  <svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true">
+    <defs>
+      <clipPath id="heartClip" clipPathUnits="objectBoundingBox">
+        <path d="M 0.5 1 C 0.15 0.74 0 0.5 0 0.28 C 0 0.11 0.1 0 0.25 0 C 0.34 0 0.43 0.07 0.5 0.18 C 0.57 0.07 0.66 0 0.75 0 C 0.9 0 1 0.11 1 0.28 C 1 0.5 0.85 0.74 0.5 1 Z"/>
+      </clipPath>
+    </defs>
+  </svg>
+
+  <!-- 💖 HATI MELAYANG -->
+  <div class="hearts">
+    <span>💖</span><span>🌸</span><span>💕</span><span>🎀</span>
+    <span>💗</span><span>🌷</span><span>💝</span><span>✨</span>
+  </div>
+
+  <!-- ← KEMBALI -->
+  <a href="awal.html" class="back-btn">← Kembali</a>
+
+  <div class="main">
+    <h1 class="title">The Best Princess In The World</h1>
+    <p class="subtitle">Engkau Sangat Berharga Kemarin, Saat Ini, Ataupun Di Masa Depan! 🌸</p>
+
+    <div class="click-info">💡 Setiap peristiwa menyimpan makna dan pesan;) 💖</div>
+
+    <!-- ===== GRID FOTO 4x3 ===== -->
+    <div class="photo-grid" id="photoGrid">
+      <div class="photo-frame">
+        <img src="foto1.jpeg" alt="Foto 1">
+        <div class="love-bubble">Bahkan saat wujudmu belum sepenuhnya mengerti, kau begitu manis dan melontarkan senyum bahagia! 💖</div>
+      </div>
+      <div class="photo-frame">
+        <img src="foto2.jpeg" alt="Foto 2">
+        <div class="love-bubble">Engkau adalah cahaya yang hadir memberikan kehangatan bagi setiap orang!🌸</div>
+      </div>
+      <div class="photo-frame">
+        <img src="foto3.jpeg" alt="Foto 3">
+        <div class="love-bubble">Engkau begitu terampil merajut tawa, memeluk perih, dan mengelus kebisingan!✨</div>
+      </div>
+      <div class="photo-frame">
+        <img src="foto4.jpeg" alt="Foto 4">
+        <div class="love-bubble">Jangan pernah bilang engkau tidak berharap, bahkan engkau menjadi lilin bagi mereka yang sangat menyayangi mu!💕</div>
+      </div>
+      <div class="photo-frame">
+        <img src="foto5.jpeg" alt="Foto 5">
+        <div class="love-bubble">Tanpa kusadari aku menyayangi dirimu, ini adalah foto pertama princes di galeriku.🌟</div>
+      </div>
+      <div class="photo-frame">
+        <img src="foto6.jpeg" alt="Foto 6">
+        <div class="love-bubble">Hari-hari yang tak pernah ada dalam skenario hidupku, dilukis senja oleh drimu.💗</div>
+      </div>
+      <div class="photo-frame">
+        <img src="foto7.jpeg" alt="Foto 7">
+        <div class="love-bubble">Aku masih ingat aku balik lagi untuk menjemput mu, dan engkau selalu memberikan senyum walau saat aku dilanda banjir, hehe.🎀</div>
+      </div>
+      <div class="photo-frame">
+        <img src="foto8.jpeg" alt="Foto 8">
+        <div class="love-bubble">Tanpa pertanyaan kau tetap rupawan setiap hari walau tidak dengan goresan kecantikan.💖</div>
+      </div>
+      <div class="photo-frame">
+        <img src="foto9.jpeg" alt="Foto 9">
+        <div class="love-bubble">Terima kasih sudah bertahan dan melewati berbagai cobaan hingga saat ini, kau adalah pahlawan!🌸</div>
+      </div>
+      <div class="photo-frame">
+        <img src="foto10.jpeg" alt="Foto 10">
+        <div class="love-bubble">Biarkan aku hadir untuk mu selamanya, saat engkau lelah, sedih, dan bahagia.👑</div>
+      </div>
+      <div class="photo-frame">
+        <img src="foto11.jpeg" alt="Foto 11">
+        <div class="love-bubble">Terima kasih sudah menjadi tangan yang selalu menolong orang di sekitar, engkau begitu hebat!💕</div>
+      </div>
+      <div class="photo-frame">
+        <img src="foto12.jpeg" alt="Foto 12">
+        <div class="love-bubble">Sejak aku mendengar tegas dan begitu pandainya dirimu, serta bagimana kelembutan hatimu. Aku pun sadar engkaulah yang terbaik!✨💖</div>
+      </div>
+    </div>
+
+    <!-- ===== KATA-KATA ===== -->
+    <div class="message-box">
+      <div class="deco-top">🎀</div>
+      <p>Selamat ulang tahun yaa cantik! 💖</p>
+      <p>Aku adalah pohon yang kau temui tanpa sengaja. Pohon yang kau butuhkan saat terik, hujan, bahkan saat mentari hadir. Kenyamanan dan kebahagian akan selalu diusahakan untuk mu. ✨</p>
+      <p>Hari ini adalah peringatan hari kelahiran mu, bahkan langit bersorak diiringi rintik hujan yang ritmis, dan bass petir yang ingin menyambut sebelum engkau turun di dunia yang fana ini. Semoga engkau memperoleh apa pun yang engkau harapkan dan seturut kehendak Tuhan. Semoga engkau sehat selalu seperti tumbuhan, bahagia selalu seperti matahari, dan menawan selalu seperti bulan. Terima kasih telah hadir di dunia, terkhusus di hidup ku!🌸</p>
+
+      <!-- 💖 TOMBOL I LOVE YOU → klik 1× aja lanjut ke video.html -->
+      <a href="video.html" class="signature-btn">
+        <span class="sig-text">I love You 💕</span>
+        
+      </a>
+    </div>
+  </div>
+
+  <!-- 🎵 MUSIK -->
+  <button class="music-btn" id="musicBtn" title="Putar / Jeda Musik">🎵</button>
+
+<script>
+/* =========================================================
+   🖼️ ANIMASI FOTO MUNCUL SATU-PER-SATU
+   ========================================================= */
+(function() {
+  const frames = document.querySelectorAll('.photo-frame');
+
+  function applyRandomRotation() {
+    frames.forEach(f => {
+      const rot = (Math.random() * 6 - 3).toFixed(1);
+      f.style.setProperty('--rot', rot + 'deg');
+    });
+  }
+
+  function playReveal() {
+    frames.forEach(f => {
+      f.classList.remove('show');
+      f.style.opacity = '0';
+    });
+
+    applyRandomRotation();
+
+    void document.body.offsetWidth;
+
+    frames.forEach((f, i) => {
+      setTimeout(() => {
+        f.classList.add('show');
+      }, 150 + i * 220);
+    });
+  }
+
+  playReveal();
+})();
+
+/* =========================================================
+   💖 BALON TEKS BENTUK LOVE
+   ========================================================= */
+(function() {
+  const frames = document.querySelectorAll('.photo-frame');
+
+  frames.forEach(frame => {
+    frame.addEventListener('click', function(e) {
+      const bubble = this.querySelector('.love-bubble');
+      if (!bubble) return;
+
+      const wasActive = bubble.classList.contains('active');
+
+      // Tutup semua bubble lain
+      document.querySelectorAll('.love-bubble.active').forEach(b => {
+        b.classList.remove('active');
+      });
+      document.querySelectorAll('.photo-frame.active').forEach(f => {
+        f.classList.remove('active');
+      });
+
+      // Toggle bubble yang diklik
+      if (!wasActive) {
+        bubble.classList.add('active');
+        this.classList.add('active');
+      }
+    });
+  });
+
+  // Klik di luar foto → tutup semua bubble
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.photo-frame')) {
+      document.querySelectorAll('.love-bubble.active').forEach(b => {
+        b.classList.remove('active');
+      });
+      document.querySelectorAll('.photo-frame.active').forEach(f => {
+        f.classList.remove('active');
+      });
+    }
+  });
+})();
+
+/* =========================================================
+   🎵 MUSIK DARI FILE MP3 SENDIRI
+   ========================================================= */
+(function() {
+  const btn = document.getElementById('musicBtn');
+  const MUSIC_FILE = 'sesill.mp3';
+
+  const audio = new Audio(MUSIC_FILE);
+  audio.loop = true;
+  audio.volume = 0.6;
+
+  let isPlaying = false;
+
+  function startMusic() {
+    audio.play().then(() => {
+      isPlaying = true;
+      btn.textContent = '🎶';
+      btn.classList.add('playing');
+    }).catch(err => {
+      console.error('Gagal putar musik:', err);
+    });
+  }
+
+  function stopMusic() {
+    audio.pause();
+    isPlaying = false;
+    btn.textContent = '🎵';
+    btn.classList.remove('playing');
+  }
+
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (isPlaying) stopMusic();
+    else startMusic();
+  });
+
+  // Auto-play saat klik pertama di mana saja
+  document.addEventListener('click', function once() {
+    if (!isPlaying) startMusic();
+    document.removeEventListener('click', once);
+  }, { once: true });
+})();
+</script>
+</body>
+</html>
